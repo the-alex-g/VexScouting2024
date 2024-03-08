@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqdf5u474ojx"]
+[gd_scene load_steps=6 format=3 uid="uid://dqdf5u474ojx"]
 
 [ext_resource type="PackedScene" uid="uid://cue2tgc53d7p8" path="res://team.tscn" id="1_as5hc"]
 [ext_resource type="Script" path="res://main.gd" id="1_ij781"]
+[ext_resource type="PackedScene" uid="uid://brk8yoravkajb" path="res://team_lookup.tscn" id="3_0uds8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xijnb"]
 bg_color = Color(1, 0, 0, 1)
@@ -63,8 +64,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/Teams/RedTeam/VBoxContainer"]
+layout_mode = 2
+
 [node name="RedTeam2" parent="ScrollContainer/VBoxContainer/Teams/RedTeam/VBoxContainer" instance=ExtResource("1_as5hc")]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/Teams/RedTeam/VBoxContainer"]
 layout_mode = 2
 
 [node name="RedTeamScore" type="LineEdit" parent="ScrollContainer/VBoxContainer/Teams/RedTeam/VBoxContainer"]
@@ -84,8 +91,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/Teams/BlueTeam/VBoxContainer"]
+layout_mode = 2
+
 [node name="BlueTeam2" parent="ScrollContainer/VBoxContainer/Teams/BlueTeam/VBoxContainer" instance=ExtResource("1_as5hc")]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/Teams/BlueTeam/VBoxContainer"]
 layout_mode = 2
 
 [node name="BlueTeamScore" type="LineEdit" parent="ScrollContainer/VBoxContainer/Teams/BlueTeam/VBoxContainer"]
@@ -93,16 +106,26 @@ unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Match Score"
 
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="SaveButton" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Save"
 
-[node name="TeamLookup" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Team Lookup"
 
-[node name="LookupResults" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TeamLookup" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_0uds8")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TeamLookup2" parent="ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_0uds8")]
 layout_mode = 2
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="text_changed" from="ScrollContainer/VBoxContainer/TeamLookup" to="." method="_on_team_lookup_text_changed"]
